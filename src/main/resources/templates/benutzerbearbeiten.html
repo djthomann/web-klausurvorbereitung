@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Benutzer bearbeiten</title>
+        <style>
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+            }
+
+            .lists {
+                display: flex;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Benutzerprofil <span th:text="${nummer}"></span> bearbeiten</h2>
+        <form th:action="@{#}" method="POST" th:object="${formular}">
+            <div>
+                <label for="name">Name</label>
+            <input name="name" type="text" th:field="*{name}">
+            </div>
+            <div>
+                <label for="mail">E-Mail</label>
+            <input name="mail" type="text" th:field="*{mail}">
+            </div>
+            <div>
+                <label for="password">Passwort</label>
+                <input name="password" type="text" th:field="*{password}">
+            </div> 
+            <div class="lists">
+                <div>
+                    <label for="likes">Mag</label>
+                    <h4>Max: <span th:text="${maxwunsch}"></span></h4>
+                    <input name="likes" type="text">
+                </div>
+                <div>
+                    <label for="dislikes">Mag nicht</label>
+                    <h4>Max: <span th:text="${maxwunsch}"></span></h4>
+                    <input name="dislikes" type="text">
+                    <div>
+                        <span>Eintrag 1</span>
+                        <span>Eintrag 2</span>
+                    </div>
+                </div>
+            </div>
+            <button>Abschicken</button>
+        </form>
+    </body>
+</html>
