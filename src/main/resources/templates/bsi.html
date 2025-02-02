@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>BSI-Rechner</title>
+    </head>
+
+    <body>
+        <form action="/bsi" method="post">
+            <label for="koerpergroesse">Körpergröße</label>
+            <input name="koerpergroesse" type="text">
+            <label for="schuhgroesse">Schuhgröße</label>
+            <input name="schuhgroesse" type="text">
+            <label for="semester">Semester</label>
+            <input name="semester" type="text">
+            <button>Abschicken</button>
+        </form>
+        <h2>Ihr BSI beträgt: </h2><h2 th:text="${bsiwert}"></h2>
+    </body>
+</html>
