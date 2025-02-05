@@ -1,5 +1,7 @@
 package de.hsrm.mi.web.klausurvorbereitung.klausurvorbereitung.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 @SessionAttributes(names = {"formular", "nummer"})
 public class BenutzerController {
 
+    Logger logger = LoggerFactory.getLogger(BenutzerController.class);
+
     private final int maxwunsch = 5;
     @ModelAttribute("maxwunsch")
     public void initMaxwunsch(Model m) {
@@ -40,6 +44,17 @@ public class BenutzerController {
     @PostMapping("/{nummer}")
     public String postBenutzer(@ModelAttribute("formular") BenutzerFormular formular) {
         
+        if(formular.getDislike() != null && formular.getDislikes().size() < maxwunsch) {
+            formular.addDislike(formular.getDislike());
+        }
+
+        if(formular.getLike() != null && formular.getLikes().size() < maxwunsch) {
+            formular.addLike(formular.getLike());
+        }
+
+        logger.info(formular.getDislikes().toString());
+        logger.info(formular.getLikes().toString());
+
         return "benutzerbearbeiten";
     }
     
