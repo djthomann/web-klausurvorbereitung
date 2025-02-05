@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 // Wenig sinnvoll da keine Ausgabe des Stacktrace, aber nett zum Ausprobieren
 // @Controller
 // @ControllerAdvice
-public class KrassungsController implements ErrorController {
+/*public class KrassungsController implements ErrorController {
 
     public static final String ERRORPATH = "/error";
     
@@ -24,3 +24,4 @@ public class KrassungsController implements ErrorController {
 
 
 }
+*/
