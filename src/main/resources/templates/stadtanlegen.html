@@ -1,13 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Städte anzeigen</title>
-        <style>
-            
-        </style>
+        <link rel="stylesheet" type="text/css" href="/main.css">
+        <link rel="stylesheet" type="text/css" href="/stadt.css">
     </head>
 
     <body>
-        <h2>Eine Stadt anlegen!</h2>
+        <th:block th:replace="~{frag/header :: header}"></th:block>
+        <h2 th:if="${nummer} == 0">Eine neue Stadt anlegen!</h2>
+        <h2 th:if="${nummer} gt 0 ">Stadt <span th:text="${nummer}"></span> bearbeiten!</h2>
         <form th:action="@{#}" method="POST" th:object="${stadtformular}">
             <label for="name">Name</label>
             <input th:field="*{name}" name="name" type="text">
@@ -15,5 +16,6 @@
             <input th:field="*{einwohner}" name="einwohner" type="number">
             <button>Abschicken</button>
         </form>
+        <th:block th:replace="~{frag/footer :: footer}"></th:block>
     </body>
 </html>
