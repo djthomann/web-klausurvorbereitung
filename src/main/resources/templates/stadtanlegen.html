@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Städte anzeigen</title>
+        <style>
+            
+        </style>
+    </head>
+
+    <body>
+        <h2>Eine Stadt anlegen!</h2>
+        <form th:action="@{#}" method="POST" th:object="${stadtformular}">
+            <label for="name">Name</label>
+            <input th:field="*{name}" name="name" type="text">
+            <label for="einwohner">Einwohner</label>
+            <input th:field="*{einwohner}" name="einwohner" type="number">
+            <button>Abschicken</button>
+        </form>
+    </body>
+</html>
