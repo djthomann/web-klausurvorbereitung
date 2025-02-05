@@ -29,20 +29,22 @@
                 <label for="password">Passwort</label>
                 <input name="password" type="text" th:field="*{password}">
             </div> 
+            <div>
+                <label for="birthday">Geburtstag</label>
+                <input name="birthday" type="text" th:field="*{password}">
+            </div> 
             <div class="lists">
                 <div>
-                    <label for="likes">Mag</label>
+                    <label for="like">Mag</label>
                     <h4>Max: <span th:text="${maxwunsch}"></span></h4>
-                    <input name="likes" type="text">
+                    <input name="like" type="text">
+                    <span th:each="l: *{likes}" th:text="${l}"></span>
                 </div>
                 <div>
-                    <label for="dislikes">Mag nicht</label>
+                    <label for="dislike">Mag nicht</label>
                     <h4>Max: <span th:text="${maxwunsch}"></span></h4>
-                    <input name="dislikes" type="text">
-                    <div>
-                        <span>Eintrag 1</span>
-                        <span>Eintrag 2</span>
-                    </div>
+                    <input name="dislike" type="text">
+                    <span th:each="d: *{dislikes}" th:text="${d}"></span>
                 </div>
             </div>
             <button>Abschicken</button>
