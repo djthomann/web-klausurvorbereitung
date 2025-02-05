@@ -1,12 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
+        
+        <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+        
         <title>Städte anzeigen</title>
         <link rel="stylesheet" type="text/css" href="/main.css">
         <link rel="stylesheet" type="text/css" href="/stadt.css">
     </head>
 
     <body>
-        <th:block th:replace="~{frag/header :: header}"></th:block>
+        <div id="header-container" hx-get="/hx/fragments/header" hx-trigger="click" hx-swap="innerHTML">Hier den Header besorgen</div>
+        <!--<th:block th:replace="~{frag/header :: header}"></th:block>-->
         <h2 th:if="${nummer} == 0">Eine neue Stadt anlegen!</h2>
         <h2 th:if="${nummer} gt 0 ">Stadt <span th:text="${nummer}"></span> bearbeiten!</h2>
         <form th:action="@{#}" method="POST" th:object="${stadtformular}">
@@ -16,6 +20,9 @@
             <input th:field="*{einwohner}" name="einwohner" type="number">
             <button>Abschicken</button>
         </form>
-        <th:block th:replace="~{frag/footer :: footer}"></th:block>
+        <div th:hx-get="@{/hx/fragments/schnipsel/David/{nummer}(nummer=${nummer})}">Ich werde zu einem Schnipsel</div>
+        <div hx-get="/hx/fragments/header" hx-target="#header-container">Und noch ein anderer Weg den Header zu besorgen</div>
+        <div hx-get="/hx/fragments/footer" hx-trigger="click" hx-swap="outerHTML">Hier den Footer besorgen</div>
+        <!--<th:block th:replace="~{frag/footer :: footer}"></th:block>-->
     </body>
 </html>
